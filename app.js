@@ -13,11 +13,16 @@ const highNum = prompt("Please provide a high number.");
  */
 
 const randomNums = (lower, upper) => {
-  return `<h2>The random number between <span>${parseInt(
-    lowNum
-  )}</span> and <span>${parseInt(highNum)}</span> is: <span>${
-    Math.floor(Math.random() * upper - lower + 1) + lower
-  }</span></h2>`;
+  if (!isNaN(lower) || !isNaN(upper)) {
+    return `<h2>The random number between <span>${parseInt(
+      lowNum
+    )}</span> and <span>${parseInt(highNum)}</span> is: <span>${
+      Math.floor(Math.random() * upper - lower + 1) + lower
+    }</span></h2>`;
+  } else if (isNaN(lower) || isNaN(upper)) {
+    alert("Please enter a valid number");
+    main.innerHTML = "Reload and try again";
+  }
 };
 
 // Result
